@@ -37,9 +37,9 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 
 ### 演示
 
-![演示：结构生长、氢键设置、PXRD、超胞、孔道计算和渲染](examples/demo/crystery-demo-zh.gif)
+![演示：不对称单元、完整分子、生长、晶胞、PXRD、孔道计算和渲染](examples/demo/crystery-demo-zh.gif)
 
-用 CCDC 2515979（Cmme，孔道中原为戊烷）演示：打开不对称单元 → 沿化学键生长成完整的阳离子 → 氢键设置中加入 Cl 受体，显示 N–H···Cl → 沿氢键接触生长 → 晶胞中的完整分子 → PXRD 模拟 → 沿孔道方向做 1×1×3 超胞 → Zeo++ 计算孔道 → Mitsuba 渲染。计算和渲染的等待做了加速。[下载高清 MP4](examples/demo/crystery-demo-zh.mp4)（结构来自 [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w)）
+用 CCDC 2515979（Cmme，孔道中原为戊烷）演示：不对称单元 → 沿化学键生长成完整分子 → 氢键设置中加入 Cl 受体，沿 N–H···Cl 氢键生长 → 显示晶胞（分子在晶胞面上被截断）→ 基于晶胞显示完整分子 → PXRD 模拟 → Zeo++ 计算孔道 → Mitsuba 渲染。计算和渲染的等待做了加速。[下载高清 MP4](examples/demo/crystery-demo-zh.mp4)（结构来自 [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w)）
 
 界面默认是英文，**文件 › 选项 › 语言** 切换为中文。每个功能的详细说明见 **[操作手册](docs/manual.md)**（软件中按 F1 打开同一份手册）。
 
@@ -199,9 +199,9 @@ Get the latest version from the [Releases](https://github.com/luylin5/Crystery-r
 
 ### Demo
 
-![Demo: growth, hydrogen-bond settings, PXRD, a supercell, pores and rendering](examples/demo/crystery-demo-en.gif)
+![Demo: the asymmetric unit, the whole molecule, growth, the cell, PXRD, pores and rendering](examples/demo/crystery-demo-en.gif)
 
-With CCDC 2515979 (Cmme; its channels held pentane): open the asymmetric unit → grow it along the bonds into the whole cation → add Cl as an acceptor in the hydrogen-bond settings to show N–H···Cl → grow through the hydrogen bonds → whole molecules in the cell → PXRD → a 1×1×3 supercell along the channels → pores with Zeo++ → Mitsuba rendering. The waits for the calculations and the rendering are sped up. [Download the HD MP4](examples/demo/crystery-demo-en.mp4) (structure from [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w))
+With CCDC 2515979 (Cmme; its channels held pentane): the asymmetric unit → grown along the bonds into the whole molecule → Cl added as a hydrogen-bond acceptor, grown through the N–H···Cl bonds → the unit cell (molecules cut at its faces) → complete molecules based on the cell → PXRD → pores with Zeo++ → Mitsuba rendering. The waits for the calculations and the rendering are sped up. [Download the HD MP4](examples/demo/crystery-demo-en.mp4) (structure from [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w))
 
 The interface starts in English; switch to Chinese in **File › Options › Language**. Every feature is described in the **[manual](docs/manual.en.md)** (the same manual opens in the app with F1).
 
