@@ -1,0 +1,49 @@
+Crystery Freeware License
+
+Copyright (c) 2026 luylin5. All rights reserved.
+
+"The Software" means the Crystery application in the form of the binary release
+files published at https://github.com/luylin5/Crystery-release, together with
+its documentation.
+
+1. Use. You may download, install and use the Software free of charge, on any
+   number of computers, for any lawful purpose, including academic, educational
+   and commercial work.
+
+2. Sharing. You may make copies of the unmodified release files and share them
+   with others, provided that this license and THIRD_PARTY_NOTICES.md are kept
+   with them and no fee is charged for the Software itself.
+
+3. Restrictions. Except as expressly permitted by applicable law, or by the
+   license of a third-party component for that component only, you may not:
+   (a) modify, adapt or translate the Software, or distribute modified copies;
+   (b) decompile, disassemble or otherwise reverse engineer the Software in
+       order to redistribute it or any part of it;
+   (c) sell, rent, lease, sublicense or otherwise commercially distribute the
+       Software itself;
+   (d) remove or alter any copyright notice, license or attribution in it.
+
+4. Your output. Images, videos, data and other files you create with the
+   Software belong to you, and you may use them without restriction.
+
+5. Attribution (requested, not required). If the Software helps your work,
+   the author asks that you star the repository and name "Crystery" in
+   publications, reports or presentations that use it. This request is not a
+   condition of this license.
+
+6. Third-party components. The Software includes open-source components that
+   are licensed to you under their own terms, listed in THIRD_PARTY_NOTICES.md.
+   Nothing in this license limits the rights those licenses give you for those
+   components.
+
+7. No warranty. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO
+   EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR
+   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+   IN THE SOFTWARE. Results computed by the Software (for example PXRD patterns
+   and pore properties) should be checked before they are relied upon.
+
+8. Termination. This license ends automatically if you break its terms; you
+   must then stop using and sharing the Software.
