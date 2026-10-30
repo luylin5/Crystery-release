@@ -35,11 +35,11 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 3. **渲染出图**：在 **渲染** 功能区选渲染器（PyMOL 或 Mitsuba），设好图片尺寸和 DPI，点 **渲染预览** 看效果，满意后 **导出图片**。画面中间的渲染框就是导出的范围。
 4. **保存**：**保存到图库**（Ctrl+S）把结构、设置和视角一起存下，以后在图库（Ctrl+G）中点缩略图就能按原样打开；调好的画法可以存成 **预设风格**，用到别的结构上。
 
-### 演示：MOF-5 的孔道计算与渲染
+### 演示
 
-![演示：打开 MOF-5，加上配位多面体和超胞，用 Zeo++ 计算孔道，再用 Mitsuba 渲染](examples/demo/mof-5-demo.gif)
+![演示：结构生长、氢键设置、PXRD、超胞、孔道计算和渲染](examples/demo/crystery-demo-zh.gif)
 
-打开 MOF-5 → 配位多面体和 2×2×1 超胞 → **工具 › 孔道** 用 Zeo++ 计算孔道（N₂ 探针）→ 查看结果表 → **渲染 › Mitsuba** 渲染预览。计算和渲染的等待时间做了加速。[下载高清 MP4](examples/demo/mof-5-demo.mp4)
+用 CCDC 2515979（Cmme，孔道中原为戊烷）演示：打开不对称单元 → 沿化学键生长成完整的阳离子 → 氢键设置中加入 Cl 受体，显示 N–H···Cl → 沿氢键接触生长 → 晶胞中的完整分子 → PXRD 模拟 → 沿孔道方向做 1×1×3 超胞 → Zeo++ 计算孔道 → Mitsuba 渲染。计算和渲染的等待做了加速。[下载高清 MP4](examples/demo/crystery-demo-zh.mp4)（结构来自 [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w)）
 
 界面默认是英文，**文件 › 选项 › 语言** 切换为中文。每个功能的详细说明见 **[操作手册](docs/manual.md)**（软件中按 F1 打开同一份手册）。
 
@@ -197,11 +197,11 @@ Get the latest version from the [Releases](https://github.com/luylin5/Crystery-r
 3. **Render**: on the **Render** ribbon, choose the renderer (PyMOL or Mitsuba), set the image size and DPI, check the result with **Render preview**, then **Export image**. The frame in the middle of the view is exactly what gets exported.
 4. **Save**: **Save to gallery** (Ctrl+S) keeps the structure, its settings and the view; click its thumbnail in the gallery (Ctrl+G) to open it again as it was. Save a look you like as a **style preset** and apply it to other structures.
 
-### Demo: pores and rendering of MOF-5
+### Demo
 
-![Demo: open MOF-5, add polyhedra and a supercell, compute the pores with Zeo++, render with Mitsuba](examples/demo/mof-5-demo.gif)
+![Demo: growth, hydrogen-bond settings, PXRD, a supercell, pores and rendering](examples/demo/crystery-demo-en.gif)
 
-Open MOF-5 → coordination polyhedra and a 2×2×1 supercell → **Tools › Pores** computes the pores with Zeo++ (N₂ probe) → the results table → **Render › Mitsuba** render preview. The waits for the calculation and the rendering are sped up. [Download the HD MP4](examples/demo/mof-5-demo.mp4)
+With CCDC 2515979 (Cmme; its channels held pentane): open the asymmetric unit → grow it along the bonds into the whole cation → add Cl as an acceptor in the hydrogen-bond settings to show N–H···Cl → grow through the hydrogen bonds → whole molecules in the cell → PXRD → a 1×1×3 supercell along the channels → pores with Zeo++ → Mitsuba rendering. The waits for the calculations and the rendering are sped up. [Download the HD MP4](examples/demo/crystery-demo-en.mp4) (structure from [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w))
 
 The interface starts in English; switch to Chinese in **File › Options › Language**. Every feature is described in the **[manual](docs/manual.en.md)** (the same manual opens in the app with F1).
 
