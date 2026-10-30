@@ -1,10 +1,16 @@
 # Crystery
 
+![Windows 10 | 11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078d6) ![免费使用 · Free to use](https://img.shields.io/badge/%E5%85%8D%E8%B4%B9%E4%BD%BF%E7%94%A8-Free%20to%20use-2b8a3e) ![中文 | English](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-English-555)
+
 **中文** · [English](#english)
 
 Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、画出可以发表的结构图，并模拟粉末衍射（PXRD）图谱、分析孔道。下载即可使用，不需要另外安装 Python、PyMOL 或其他程序。
 
+![Co-MOF-74 的一维孔道，Crystery 渲染](examples/gallery/co-mof-74-channels-mitsuba-glow.png)
+
 > ⭐ **如果 Crystery 对你有帮助，请给这个仓库点一个 Star；在论文、报告或演示中用它作图或计算时，请写明使用了 Crystery（引用格式见[下文](#引用)）。** 这是对开发最大的支持。
+
+[下载](#下载) · [快速上手](#快速上手) · [示例图库](#示例图库) · [功能](#功能) · [常见问题](#常见问题) · [引用](#引用) · [许可](#许可) · [反馈](#反馈)
 
 ## 下载
 
@@ -20,15 +26,88 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 - Windows 可能提示“无法识别的应用”（安装包没有代码签名）：点“更多信息” › “仍要运行”。
 - 软件内 **文件 › 帮助 › 检查更新** 可以查看是否有新版本。
 
+## 快速上手
+
+1. **打开结构**：把文件拖进窗口，或 **文件 › 打开**（Ctrl+O）。也可以在资源管理器中用“打开方式”选 Crystery。
+2. **调整画面**：右键拖动旋转，滚轮缩放，中键或 Ctrl+右键拖动平移；左键单击选择原子，双击选中整个分子。模型、颜色、多面体、超胞等在 **结构** 功能区，参数显示在左侧栏。
+3. **渲染出图**：在 **渲染** 功能区选渲染器（PyMOL 或 Mitsuba），设好图片尺寸和 DPI，点 **渲染预览** 看效果，满意后 **导出图片**。画面中间的渲染框就是导出的范围。
+4. **保存**：**保存到图库**（Ctrl+S）把结构、设置和视角一起存下，以后在图库（Ctrl+G）中点缩略图就能按原样打开；调好的画法可以存成 **预设风格**，用到别的结构上。
+
+界面默认是英文，**文件 › 选项 › 语言** 切换为中文；按 F1 打开内置操作手册。
+
+## 示例图库
+
+下面的图都是用 Crystery 画的，孔道由软件内的 Zeo++ 计算并画进渲染图。
+
+**MOF 与孔道**
+
+<table>
+<tr>
+<td width="50%"><img src="examples/gallery/mof-5-pore-surface-mitsuba.png" alt="MOF-5 的孔道表面"></td>
+<td width="50%"><img src="examples/gallery/hkust-1-pores-pockets-pymol.png" alt="HKUST-1 的孔道和封闭孔穴"></td>
+</tr>
+<tr>
+<td>MOF-5：N₂ 探针的孔道接触面，ZnO₄ 多面体（Mitsuba）</td>
+<td>HKUST-1：贯通的孔道（蓝）和 N₂ 进不去的封闭孔穴（橙）（PyMOL）</td>
+</tr>
+</table>
+
+页首的图是 Co-MOF-74：沿 c 轴看到的一维六边形孔道，深色背景上孔道发光（Mitsuba）。
+
+**笼子与客体**
+
+<table>
+<tr>
+<td width="50%"><img src="examples/gallery/p4-in-fe4l6-cage-mitsuba.png" alt="Fe4L6 笼中的白磷 P4"></td>
+<td width="50%">Fe₄L₆ 四面体笼中包着的白磷分子 P₄。笼子画成棍状和 FeN₆ 配位多面体，客体单独设为空间填充，用 Mitsuba 路径追踪渲染。</td>
+</tr>
+</table>
+
+**渲染风格**：同一个笼子、同一个视角
+
+<table>
+<tr>
+<td><img src="examples/gallery/styles/1-pymol-ballstick.png" alt="PyMOL 球棍"></td>
+<td><img src="examples/gallery/styles/2-pymol-stick-outline.png" alt="PyMOL 描轮廓"></td>
+<td><img src="examples/gallery/styles/3-pymol-spacefill.png" alt="PyMOL 空间填充"></td>
+<td><img src="examples/gallery/styles/4-mitsuba-glossy.png" alt="Mitsuba 光泽塑料"></td>
+</tr>
+<tr>
+<td>PyMOL · 球棍</td><td>PyMOL · 棍状加轮廓</td><td>PyMOL · 空间填充</td><td>Mitsuba · 光泽塑料</td>
+</tr>
+<tr>
+<td><img src="examples/gallery/styles/5-mitsuba-metal.png" alt="Mitsuba 金属"></td>
+<td><img src="examples/gallery/styles/6-mitsuba-glass.png" alt="Mitsuba 玻璃"></td>
+<td><img src="examples/gallery/styles/7-mitsuba-glow.png" alt="Mitsuba 发光"></td>
+<td><img src="examples/gallery/styles/8-mitsuba-matte-outline-dof.png" alt="Mitsuba 哑光、轮廓、景深"></td>
+</tr>
+<tr>
+<td>Mitsuba · 金属</td><td>Mitsuba · 玻璃</td><td>Mitsuba · 发光</td><td>Mitsuba · 哑光、轮廓、景深</td>
+</tr>
+</table>
+
+结构来自剑桥结构数据库（CSD）：MOF-5（MIBQAR，[10.1021/jp103212z](https://doi.org/10.1021/jp103212z)）、HKUST-1（DOTSOV，[10.1002/anie.200803925](https://doi.org/10.1002/anie.200803925)）、Co-MOF-74（SATNOR01，[10.1002/anie.200501508](https://doi.org/10.1002/anie.200501508)）、P₄@Fe₄L₆（COSZOA，[10.1126/science.1175313](https://doi.org/10.1126/science.1175313)）。可以按编号在 [CCDC](https://www.ccdc.cam.ac.uk/structures/) 免费下载 CIF。
+
 ## 功能
 
 - **打开结构**：CIF、SHELX RES/INS、MOL/SDF、MOL2、PDB、XYZ / 扩展 XYZ、VASP POSCAR、XSF、Gaussian 输入、CSSR；一个文件中有多个结构（多个数据块、多帧）时可逐个查看。
 - **调整画面**：球棍、棍状、空间填充、线框、热椭球模型；元素颜色和半径、键和氢键、弱作用、配位多面体、芳环填充；超胞、生长、无序组分；沿晶轴或任意 [uvw] / (hkl) 观察、透视或正交投影、剪切平面；选择、测量和标注。
 - **渲染出图**：两种渲染器——**PyMOL**（光线追踪，快，和画面一致）和 **Mitsuba 3**（路径追踪：柔和阴影、反射、玻璃、发光、景深）；自定义图片尺寸、DPI 和透明背景；逐帧渲染旋转、摇摆等**视频**。
 - **PXRD 模拟**：从晶胞计算粉末衍射图谱（波长、2θ 范围、峰宽、温度因子、择优取向），可叠加实验图谱（XRDML、RAS、两列数据）对比。
-- **孔道分析**：用 Zeo++ 或网格法计算孔径、比表面积、孔体积和孔径分布，并把孔道画进结构。
+- **孔道分析**：用 Zeo++ 或网格法计算孔径、比表面积、孔体积和孔径分布，区分贯通的孔道和封闭孔穴，并把孔道画进结构。
 - **图库与风格**：画好的图连同设置存进图库；把一套画法存成风格，打开别的结构一键套用；批量处理多个文件。
+- **AI 助手（MCP）**：在偏好设置中打开后（默认关，只限本机），支持 MCP 的 AI 助手可以在你看着的窗口里打开结构、调整画面、渲染和导出图片。
 - **中文 / English 界面**，内置操作手册（F1）和首次启动的新手引导。
+
+## 常见问题
+
+**Mitsuba 渲染很慢？** 有 NVIDIA 显卡时会自动用 GPU；用不了 GPU 时，提示中会写出原因（多半是显卡驱动太旧）。调参数时先用“预览”质量，定稿再用“精细”。
+
+**导出的图片多大？** 正好是渲染设置中的宽×高像素；DPI 写进图片文件，供排版软件换算打印尺寸。投稿常用 300–600 DPI。
+
+**孔道分析需要另装 Zeo++ 吗？** 不需要，安装包和便携版都自带。分子（没有晶胞的文件）不能做孔道和 PXRD。
+
+**打不开某个文件，或者画得不对？** 请在 [Issues](https://github.com/luylin5/Crystery-release/issues) 中附上这个文件和截图。
 
 ## 引用
 
@@ -74,6 +153,8 @@ Crystery is a Windows desktop application for viewing crystal and molecular stru
 
 > ⭐ **If Crystery is useful to you, please star this repository, and when you use it for figures or calculations in a paper, report or talk, please mention Crystery by name (see [Citing](#citing)).** It is the best way to support its development.
 
+[Download](#download) · [Getting started](#getting-started) · [Gallery](#gallery) · [Features](#features) · [FAQ](#faq) · [Citing](#citing) · [License](#license) · [Feedback](#feedback)
+
 ## Download
 
 Get the latest version from the [Releases](https://github.com/luylin5/Crystery-release/releases) page:
@@ -88,15 +169,47 @@ Get the latest version from the [Releases](https://github.com/luylin5/Crystery-r
 - Windows may warn about an unrecognised app (the installer is not code-signed): click "More info" › "Run anyway".
 - **File › Help › Check for updates** in the app tells you when a new version is out.
 
+## Getting started
+
+1. **Open a structure**: drag the file into the window, or **File › Open** (Ctrl+O). You can also choose Crystery under "Open with" in File Explorer.
+2. **Shape the view**: right-drag to turn, scroll to zoom, middle-drag or Ctrl+right-drag to pan; click an atom to select it, double-click to select its whole molecule. Models, colours, polyhedra, supercells and so on are on the **Structure** ribbon, with their settings in the left panel.
+3. **Render**: on the **Render** ribbon, choose the renderer (PyMOL or Mitsuba), set the image size and DPI, check the result with **Render preview**, then **Export image**. The frame in the middle of the view is exactly what gets exported.
+4. **Save**: **Save to gallery** (Ctrl+S) keeps the structure, its settings and the view; click its thumbnail in the gallery (Ctrl+G) to open it again as it was. Save a look you like as a **style preset** and apply it to other structures.
+
+The interface starts in English; switch to Chinese in **File › Options › Language**. Press F1 for the built-in manual.
+
+## Gallery
+
+All pictures were made in Crystery; the pores were computed with the bundled Zeo++ and drawn into the renderings. The pictures are shown in the [Chinese section above](#示例图库):
+
+- **Co-MOF-74** (top of the page): 1D hexagonal channels seen along c, glowing on a dark background (Mitsuba).
+- **MOF-5**: the pore contact surface for an N₂ probe, with ZnO₄ polyhedra (Mitsuba).
+- **HKUST-1**: the connected channels (blue) and the pockets N₂ cannot reach (orange) (PyMOL).
+- **P₄ in an Fe₄L₆ cage**: white phosphorus held in a tetrahedral cage, drawn as sticks with FeN₆ polyhedra and the guest space-filling (Mitsuba).
+- **Rendering styles**: the same cage from the same angle — PyMOL ball-and-stick, sticks with outlines and space-filling; Mitsuba glossy plastic, metal, glass, glow, and matte with outlines and depth of field.
+
+The structures are from the Cambridge Structural Database (CSD): MOF-5 (MIBQAR, [10.1021/jp103212z](https://doi.org/10.1021/jp103212z)), HKUST-1 (DOTSOV, [10.1002/anie.200803925](https://doi.org/10.1002/anie.200803925)), Co-MOF-74 (SATNOR01, [10.1002/anie.200501508](https://doi.org/10.1002/anie.200501508)) and P₄@Fe₄L₆ (COSZOA, [10.1126/science.1175313](https://doi.org/10.1126/science.1175313)). Their CIFs can be downloaded free of charge from the [CCDC](https://www.ccdc.cam.ac.uk/structures/) by refcode.
+
 ## Features
 
 - **Open structures**: CIF, SHELX RES/INS, MOL/SDF, MOL2, PDB, XYZ / extended XYZ, VASP POSCAR, XSF, Gaussian input, CSSR; files holding several structures (data blocks, frames) can be stepped through.
 - **Shape the view**: ball-and-stick, stick, space-filling, wireframe and thermal-ellipsoid models; element colours and radii, bonds and hydrogen bonds, weak interactions, coordination polyhedra, ring fill; supercells, growth, disorder; views along cell axes or any [uvw] / (hkl), perspective or orthographic projection, clipping planes; selection, measurement and labels.
 - **Render pictures**: two renderers — **PyMOL** (ray tracing: fast, matches the view) and **Mitsuba 3** (path tracing: soft shadows, reflections, glass, glow, depth of field); image size, DPI and transparent background; frame-by-frame **videos** of turning and rocking structures.
 - **PXRD simulation**: the powder pattern from the cell (wavelength, 2θ range, peak width, temperature factors, preferred orientation), with measured patterns (XRDML, RAS, two-column data) overlaid for comparison.
-- **Pore analysis**: pore sizes, surface area, pore volume and pore size distribution with Zeo++ or a grid method, with the pores drawn in the structure.
+- **Pore analysis**: pore sizes, surface area, pore volume and pore size distribution with Zeo++ or a grid method, telling connected channels from closed pockets, with the pores drawn in the structure.
 - **Gallery and styles**: save drawings with their settings to a gallery; save a look as a style and apply it to other structures with one click; batch-process many files.
+- **AI assistants (MCP)**: once allowed in Preferences (off by default, this computer only), an AI assistant that speaks MCP can open structures, change the view, and render and export pictures in the window you are watching.
 - **Chinese / English interface**, a built-in manual (F1) and a getting-started tour on first launch.
+
+## FAQ
+
+**Mitsuba is slow.** It uses an NVIDIA GPU when it can; when it cannot, the notice says why (most often an old graphics driver). Use the Preview quality while adjusting, and Fine for the final picture.
+
+**How big is the exported image?** Exactly the width × height in pixels set in the render settings; the DPI is written into the image file for layout programs to work out the printed size. Journals usually ask for 300–600 DPI.
+
+**Do I need to install Zeo++ for pores?** No, the installer and the portable app both include it. Molecules (files without a unit cell) have no pores or PXRD.
+
+**A file does not open, or looks wrong.** Please attach the file and a screenshot in [Issues](https://github.com/luylin5/Crystery-release/issues).
 
 ## Citing
 
