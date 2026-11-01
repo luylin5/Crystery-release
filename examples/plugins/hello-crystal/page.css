@@ -1,0 +1,2 @@
+/* 插件自带的样式：只作用于自己的页面。 */
+.hello-crystal-page .hello-crystal-log { font-size: 12px; color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }

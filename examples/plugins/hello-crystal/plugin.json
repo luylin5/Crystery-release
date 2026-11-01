@@ -1,0 +1,19 @@
+{
+  "id": "org.crystery.hello-crystal",
+  "name": "晶体小工具（示例）",
+  "version": "1.0.0",
+  "crystery": ">=0.5.0",
+  "author": "Crystery",
+  "homepage": "https://github.com/luylin5/Crystery-plugins",
+  "description": "示例插件：从结构文件算晶胞内容、化学式和密度；演示功能区、侧边栏页面、原子右键菜单、事件和设置。",
+  "entry": "main.py",
+  "script": "page.js",
+  "style": "page.css",
+  "inputs": [
+    { "id": "digits", "label": "小数位数", "type": "number", "min": 1, "max": 6, "step": 1, "default": 3 }
+  ],
+  "actions": [
+    { "id": "density", "label": "密度与化学式", "title": "从结构文件算晶胞内容、化学式和密度" },
+    { "id": "neighbours", "label": "近邻", "hidden": true }
+  ]
+}

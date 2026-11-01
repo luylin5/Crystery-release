@@ -12,7 +12,7 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 
 > ⭐ **如果 Crystery 对你有帮助，请给这个仓库点一个 Star；用它作图或计算的论文，请在支持信息（SI）中引用一下（格式见[下文](#支持-crystery)）。** 这是对开发最大的支持。
 
-[下载](#下载) · [快速上手](#快速上手) · [操作手册](docs/manual.md) · [示例图库](#示例图库) · [功能](#功能) · [常见问题](#常见问题) · [支持 Crystery](#支持-crystery) · [许可](#许可) · [反馈](#反馈)
+[下载](#下载) · [快速上手](#快速上手) · [操作手册](docs/manual.md) · [示例图库](#示例图库) · [功能](#功能) · [插件](#插件) · [常见问题](#常见问题) · [支持 Crystery](#支持-crystery) · [许可](#许可) · [反馈](#反馈)
 
 ## 下载
 
@@ -26,7 +26,7 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 - 系统要求：Windows 10 / 11，64 位。Mitsuba 渲染有 NVIDIA 显卡时更快，没有显卡也能用 CPU 渲染。
 - 安装版的设置保存在用户的 AppData 中，图库在“文档\Crystery 图库”，升级或卸载都不会删除；便携版保存在程序旁边的 `Crystery-data` 文件夹中，整个文件夹可以直接拷走。
 - Windows 可能提示“无法识别的应用”（安装包没有代码签名）：点“更多信息” › “仍要运行”。
-- 软件内 **文件 › 帮助 › 检查更新** 可以查看是否有新版本。
+- 从 0.5.0 开始，软件启动时会检查新版本和公告，有新版本时会提示，可以选择“跳过这个版本”。这个检查默认开启，可以在 **文件 › 选项 › 偏好设置** 中关闭。也可以随时用 **文件 › 帮助 › 检查更新** 手动检查。
 
 ## 快速上手
 
@@ -103,13 +103,22 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 ## 功能
 
 - **打开结构**：CIF、SHELX RES/INS、MOL/SDF、MOL2、PDB、XYZ / 扩展 XYZ、VASP POSCAR、XSF、Gaussian 输入、CSSR；一个文件中有多个结构（多个数据块、多帧）时可逐个查看。
-- **调整画面**：球棍、棍状、空间填充、线框、热椭球模型；元素颜色和半径、键和氢键、弱作用、配位多面体、芳环填充；超胞、生长、无序组分；沿晶轴或任意 [uvw] / (hkl) 观察、透视或正交投影、剪切平面；选择、测量和标注。
+- **调整画面**：球棍、棍状、空间填充、线框、热椭球模型；元素颜色和半径（球和键的大小不设上限）、键和氢键、弱作用、配位多面体（可以在簇的中心放一个假原子 X，把整个簇画成一个多面体）、芳环填充；超胞、生长、补全显示的分子、无序组分；沿晶轴或任意 [uvw] / (hkl) 观察、透视或正交投影、剪切平面；选择、测量和标注。
 - **渲染出图**：两种渲染器——**PyMOL**（光线追踪，快，和画面一致）和 **Mitsuba 3**（路径追踪：柔和阴影、反射、玻璃、发光、景深）；自定义图片尺寸、DPI 和透明背景；逐帧渲染旋转、摇摆等**视频**。
 - **PXRD 模拟**：从晶胞计算粉末衍射图谱（波长、2θ 范围、峰宽、温度因子、择优取向），可叠加实验图谱（XRDML、RAS、两列数据）对比。
 - **孔道分析**：用 Zeo++ 或网格法计算孔径、比表面积、孔体积和孔径分布，区分贯通的孔道和封闭孔穴，并把孔道画进结构。
 - **图库与风格**：画好的图连同设置存进图库；把一套画法存成风格，打开别的结构一键套用；批量处理多个文件。
 - **AI 助手（MCP）**：在偏好设置中打开后（默认关，只限本机），支持 MCP 的 AI 助手可以在你看着的窗口里打开结构、调整画面、渲染和导出图片。
+- **插件**：从 0.5.0 开始，新功能以插件的形式添加，在 **插件** 标签中安装和管理，见[下文](#插件)。
 - **中文 / English 界面**，内置[操作手册](docs/manual.md)（F1）和首次启动的新手引导。
+
+## 插件
+
+从 0.5.0 开始，Crystery 的新功能以插件的形式提供，现有功能保持免费。插件可以添加功能区按钮、左侧栏页面、右键菜单项，也可以带自己的 Python 计算。
+
+- **安装和管理**：**插件 › 插件管理**。“插件仓库”页列出 [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) 中登记的插件，点“安装”即可，下载的文件会核对 sha256；也可以“从文件安装”插件包（`.zip`）。启用、停用、卸载都立即生效。
+- **安全**：插件可以在电脑上运行任意代码，只安装信任来源的插件。某个插件让窗口出了问题时，用 `Crystery.exe --safe-mode` 启动（这次不加载任何插件），再在插件管理中停用它。
+- **写插件**：任何人都可以在现有功能的基础上写插件，写法见[插件开发指南](docs/plugins.md)，完整的例子见 [examples/plugins/hello-crystal](examples/plugins/hello-crystal)。写好后向 [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) 提交 PR，就会出现在所有用户的插件仓库里。
 
 ## 常见问题
 
@@ -128,21 +137,21 @@ Crystery 免费使用。如果它帮到了你，请用下面任意一种方式�
 1. **点一个 Star** ⭐：点本页右上角的 Star。Star 越多，越多人能找到 Crystery。
 2. **在 SI 中引用**：用 Crystery 作图或计算的论文，请在支持信息（Supporting Information）的方法部分写一句，例如：
 
-   > 晶体结构图使用 Crystery 0.1.0 绘制（https://github.com/luylin5/Crystery-release）。
+   > 晶体结构图使用 Crystery 0.5.0 绘制（https://github.com/luylin5/Crystery-release）。
 
-   > Crystal structure figures were prepared with Crystery 0.1.0 (https://github.com/luylin5/Crystery-release).
+   > Crystal structure figures were prepared with Crystery 0.5.0 (https://github.com/luylin5/Crystery-release).
 
    参考文献格式：
 
    ```
-   luylin5. Crystery (version 0.1.0) [Computer software]. 2026. https://github.com/luylin5/Crystery-release
+   luylin5. Crystery (version 0.5.0) [Computer software]. 2026. https://github.com/luylin5/Crystery-release
    ```
 
    ```bibtex
    @software{crystery,
      author  = {luylin5},
      title   = {Crystery},
-     version = {0.1.0},
+     version = {0.5.0},
      year    = {2026},
      url     = {https://github.com/luylin5/Crystery-release}
    }
@@ -174,7 +183,7 @@ Crystery is a Windows desktop application for viewing crystal and molecular stru
 
 > ⭐ **If Crystery is useful to you, please star this repository, and if you use it for figures or calculations in a paper, please cite it in the Supporting Information (see [Supporting Crystery](#supporting-crystery)).** It is the best way to support its development.
 
-[Download](#download) · [Getting started](#getting-started) · [Manual](docs/manual.en.md) · [Gallery](#gallery) · [Features](#features) · [FAQ](#faq) · [Supporting Crystery](#supporting-crystery) · [License](#license) · [Feedback](#feedback)
+[Download](#download) · [Getting started](#getting-started) · [Manual](docs/manual.en.md) · [Gallery](#gallery) · [Features](#features) · [Plugins](#plugins) · [FAQ](#faq) · [Supporting Crystery](#supporting-crystery) · [License](#license) · [Feedback](#feedback)
 
 ## Download
 
@@ -188,7 +197,7 @@ Get the latest version from the [Releases](https://github.com/luylin5/Crystery-r
 - Requirements: Windows 10 / 11, 64-bit. Mitsuba renders faster with an NVIDIA GPU, and falls back to the CPU without one.
 - The installed app keeps its settings in your AppData and its gallery in Documents\Crystery 图库, so updating or uninstalling keeps them; the portable app keeps them in a `Crystery-data` folder next to the program, so the whole folder can be moved as it is.
 - Windows may warn about an unrecognised app (the installer is not code-signed): click "More info" › "Run anyway".
-- **File › Help › Check for updates** in the app tells you when a new version is out.
+- From 0.5.0, Crystery checks for new versions and notices when it starts and tells you when a new version is out; you can skip a version. The check is on by default and can be turned off in **File › Options › Preferences**; **File › Help › Check for updates** checks at any time.
 
 ## Getting started
 
@@ -220,13 +229,22 @@ The structures are from the Cambridge Structural Database (CSD): MOF-5 (MIBQAR, 
 ## Features
 
 - **Open structures**: CIF, SHELX RES/INS, MOL/SDF, MOL2, PDB, XYZ / extended XYZ, VASP POSCAR, XSF, Gaussian input, CSSR; files holding several structures (data blocks, frames) can be stepped through.
-- **Shape the view**: ball-and-stick, stick, space-filling, wireframe and thermal-ellipsoid models; element colours and radii, bonds and hydrogen bonds, weak interactions, coordination polyhedra, ring fill; supercells, growth, disorder; views along cell axes or any [uvw] / (hkl), perspective or orthographic projection, clipping planes; selection, measurement and labels.
+- **Shape the view**: ball-and-stick, stick, space-filling, wireframe and thermal-ellipsoid models; element colours and radii (balls and sticks as large as you like), bonds and hydrogen bonds, weak interactions, coordination polyhedra (a dummy atom X at the centre of a cluster draws the whole cluster as one polyhedron), ring fill; supercells, growth, completing the molecules shown, disorder; views along cell axes or any [uvw] / (hkl), perspective or orthographic projection, clipping planes; selection, measurement and labels.
 - **Render pictures**: two renderers — **PyMOL** (ray tracing: fast, matches the view) and **Mitsuba 3** (path tracing: soft shadows, reflections, glass, glow, depth of field); image size, DPI and transparent background; frame-by-frame **videos** of turning and rocking structures.
 - **PXRD simulation**: the powder pattern from the cell (wavelength, 2θ range, peak width, temperature factors, preferred orientation), with measured patterns (XRDML, RAS, two-column data) overlaid for comparison.
 - **Pore analysis**: pore sizes, surface area, pore volume and pore size distribution with Zeo++ or a grid method, telling connected channels from closed pockets, with the pores drawn in the structure.
 - **Gallery and styles**: save drawings with their settings to a gallery; save a look as a style and apply it to other structures with one click; batch-process many files.
 - **AI assistants (MCP)**: once allowed in Preferences (off by default, this computer only), an AI assistant that speaks MCP can open structures, change the view, and render and export pictures in the window you are watching.
+- **Plugins**: from 0.5.0, new features come as plugins, installed and managed in the **Plugins** tab; see [below](#plugins).
 - **Chinese / English interface**, a built-in [manual](docs/manual.en.md) (F1) and a getting-started tour on first launch.
+
+## Plugins
+
+From 0.5.0, new features of Crystery come as plugins; what Crystery does now stays free. A plugin can add ribbon buttons, sidebar pages and right-click menu items, and bring Python calculations of its own.
+
+- **Install and manage**: **Plugins › Plugin manager**. The "Plugin repository" page lists the plugins registered in [Crystery-plugins](https://github.com/luylin5/Crystery-plugins): click "Install" (the download is checked against its sha256). A plugin package (`.zip`) can also be installed from a file. Enabling, disabling and uninstalling take effect at once.
+- **Safety**: a plugin can run any code on your computer, so install plugins from sources you trust only. If a plugin breaks the window, start `Crystery.exe --safe-mode` (no plugin is loaded) and switch it off in the plugin manager.
+- **Write a plugin**: anyone can build on what Crystery does. See the [plugin guide](docs/plugins.md) (in Chinese) and the complete example in [examples/plugins/hello-crystal](examples/plugins/hello-crystal), then submit a PR to [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) to list it in every user's plugin repository.
 
 ## FAQ
 
@@ -245,19 +263,19 @@ Crystery is free. If it helped you, please support it in either of these ways:
 1. **Star this repository** ⭐ with the Star button at the top right of this page. More stars help more people find Crystery.
 2. **Cite it in the SI**: if you made figures or calculations with Crystery for a paper, please add a line to the methods in the Supporting Information, for example:
 
-   > Crystal structure figures were prepared with Crystery 0.1.0 (https://github.com/luylin5/Crystery-release).
+   > Crystal structure figures were prepared with Crystery 0.5.0 (https://github.com/luylin5/Crystery-release).
 
    As a reference:
 
    ```
-   luylin5. Crystery (version 0.1.0) [Computer software]. 2026. https://github.com/luylin5/Crystery-release
+   luylin5. Crystery (version 0.5.0) [Computer software]. 2026. https://github.com/luylin5/Crystery-release
    ```
 
    ```bibtex
    @software{crystery,
      author  = {luylin5},
      title   = {Crystery},
-     version = {0.1.0},
+     version = {0.5.0},
      year    = {2026},
      url     = {https://github.com/luylin5/Crystery-release}
    }
