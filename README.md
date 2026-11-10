@@ -2,7 +2,177 @@
 
 ![Windows 10 | 11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078d6) ![免费使用 · Free to use](https://img.shields.io/badge/%E5%85%8D%E8%B4%B9%E4%BD%BF%E7%94%A8-Free%20to%20use-2b8a3e) ![中文 | English](https://img.shields.io/badge/%E4%B8%AD%E6%96%87-English-555)
 
-**中文** · [English](#english)
+**English** · [中文](#chinese)
+
+Crystery is a Windows desktop application for viewing crystal and molecular structures, making publication-quality structure figures, simulating powder X-ray diffraction (PXRD) patterns and analysing pores. Download it and run it: there is no need to install Python, PyMOL or anything else.
+
+![The Crystery window: MOF-5 with its pores and a Mitsuba render preview](examples/screenshots/crystery-window-en.png)
+
+<sub>The Crystery window: the pores of MOF-5 computed with Zeo++ (the pore settings on the left) and a Mitsuba render preview in the render frame.</sub>
+
+> ⭐ **If Crystery is useful to you, please star this repository, and if you use it for figures or calculations in a paper, please cite it in the Supporting Information (see [Supporting Crystery](#supporting-crystery)).** It is the best way to support its development.
+
+[Download](#download) · [Getting started](#getting-started) · [Manual](docs/manual.en.md) · [Gallery](#gallery) · [Features](#features) · [Plugins](#plugins) · [FAQ](#faq) · [Supporting Crystery](#supporting-crystery) · [License](#license) · [Feedback](#feedback)
+
+## Download
+
+Get the latest version from the [Releases](https://github.com/luylin5/Crystery-release/releases) page:
+
+| File | What it is |
+|---|---|
+| `Crystery-<version>-setup.exe` | **Installer (recommended)**: choose where to install; desktop and Start-menu shortcuts |
+| `Crystery-<version>-portable.exe` | Portable app: nothing to install, double-click to run |
+
+- Requirements: Windows 10 / 11, 64-bit. Mitsuba renders faster with an NVIDIA GPU, and falls back to the CPU without one.
+- The installed app keeps its settings in your AppData and its gallery in Documents\Crystery 图库, so updating or uninstalling keeps them; the portable app keeps them in a `Crystery-data` folder next to the program, so the whole folder can be moved as it is.
+- Windows may warn about an unrecognised app (the installer is not code-signed): click "More info" › "Run anyway".
+- From 0.5.0, Crystery checks for new versions and notices when it starts and tells you when a new version is out; you can skip a version. The check is on by default and can be turned off in **File › Options › Preferences**; **File › Help › Check for updates** checks at any time.
+
+## Getting started
+
+1. **Open a structure**: drag the file into the window, or **File › Open** (Ctrl+O). You can also choose Crystery under "Open with" in File Explorer.
+2. **Shape the view**: right-drag to turn, scroll to zoom, middle-drag or Ctrl+right-drag to pan; click an atom to select it, double-click to select its whole molecule. Models, colours, polyhedra, supercells and so on are on the **Structure** ribbon, with their settings in the left panel.
+3. **Render**: on the **Render** ribbon, choose the renderer (PyMOL or Mitsuba), set the image size and DPI, check the result with **Render preview**, then **Export image**. The frame in the middle of the view is exactly what gets exported.
+4. **Save**: **Save to gallery** (Ctrl+S) keeps the structure, its settings and the view; click its thumbnail in the gallery (Ctrl+G) to open it again as it was. Save a look you like as a **style preset** and apply it to other structures.
+
+### Demo
+
+![Demo: the asymmetric unit, the whole molecule, growth, the cell, PXRD, pores and rendering](examples/demo/crystery-demo-en.gif)
+
+With CCDC 2515979 (Cmme; its channels held pentane): the asymmetric unit → grown along the bonds into the whole molecule → Cl added as a hydrogen-bond acceptor, grown through the N–H···Cl bonds → the unit cell (molecules cut at its faces) → complete molecules based on the cell → PXRD → pores with Zeo++ → Mitsuba rendering. The waits for the calculations and the rendering are sped up. [Download the HD MP4](examples/demo/crystery-demo-en.mp4) (structure from [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w))
+
+The interface starts in English; switch to Chinese in **File › Options › Language**. Every feature is described in the **[manual](docs/manual.en.md)** (the same manual opens in the app with F1).
+
+## Gallery
+
+All pictures were made in Crystery; the pores were computed with the bundled Zeo++ and drawn into the renderings.
+
+**MOFs and pores**
+
+<table>
+<tr>
+<td width="50%"><img src="examples/gallery/mof-5-pore-surface-mitsuba.png" alt="The pore surface of MOF-5"></td>
+<td width="50%"><img src="examples/gallery/hkust-1-pores-pockets-pymol.png" alt="The channels and pockets of HKUST-1"></td>
+</tr>
+<tr>
+<td>MOF-5: the pore contact surface for an N₂ probe, with ZnO₄ polyhedra (Mitsuba)</td>
+<td>HKUST-1: the connected channels (blue) and the pockets N₂ cannot reach (orange) (PyMOL)</td>
+</tr>
+<tr>
+<td colspan="2"><img src="examples/gallery/co-mof-74-channels-mitsuba-glow.png" alt="The 1D channels of Co-MOF-74"></td>
+</tr>
+<tr>
+<td colspan="2">Co-MOF-74: 1D hexagonal channels seen along c, glowing on a dark background (Mitsuba)</td>
+</tr>
+</table>
+
+**Cages and guests**
+
+<table>
+<tr>
+<td width="50%"><img src="examples/gallery/p4-in-fe4l6-cage-mitsuba.png" alt="White phosphorus P4 in an Fe4L6 cage"></td>
+<td width="50%">White phosphorus, P₄, held in a tetrahedral Fe₄L₆ cage. The cage is drawn as sticks with FeN₆ coordination polyhedra, the guest on its own as space-filling, path-traced with Mitsuba.</td>
+</tr>
+</table>
+
+**Rendering styles**: the same cage from the same angle
+
+<table>
+<tr>
+<td><img src="examples/gallery/styles/1-pymol-ballstick.png" alt="PyMOL ball-and-stick"></td>
+<td><img src="examples/gallery/styles/2-pymol-stick-outline.png" alt="PyMOL outlines"></td>
+<td><img src="examples/gallery/styles/3-pymol-spacefill.png" alt="PyMOL space-filling"></td>
+<td><img src="examples/gallery/styles/4-mitsuba-glossy.png" alt="Mitsuba glossy plastic"></td>
+</tr>
+<tr>
+<td>PyMOL · ball-and-stick</td><td>PyMOL · sticks with outlines</td><td>PyMOL · space-filling</td><td>Mitsuba · glossy plastic</td>
+</tr>
+<tr>
+<td><img src="examples/gallery/styles/5-mitsuba-metal.png" alt="Mitsuba metal"></td>
+<td><img src="examples/gallery/styles/6-mitsuba-glass.png" alt="Mitsuba glass"></td>
+<td><img src="examples/gallery/styles/7-mitsuba-glow.png" alt="Mitsuba glow"></td>
+<td><img src="examples/gallery/styles/8-mitsuba-matte-outline-dof.png" alt="Mitsuba matte, outlines, depth of field"></td>
+</tr>
+<tr>
+<td>Mitsuba · metal</td><td>Mitsuba · glass</td><td>Mitsuba · glow</td><td>Mitsuba · matte, outlines, depth of field</td>
+</tr>
+</table>
+
+The structures are from the Cambridge Structural Database (CSD): MOF-5 (MIBQAR, [10.1021/jp103212z](https://doi.org/10.1021/jp103212z)), HKUST-1 (DOTSOV, [10.1002/anie.200803925](https://doi.org/10.1002/anie.200803925)), Co-MOF-74 (SATNOR01, [10.1002/anie.200501508](https://doi.org/10.1002/anie.200501508)) and P₄@Fe₄L₆ (COSZOA, [10.1126/science.1175313](https://doi.org/10.1126/science.1175313)). Their CIFs can be downloaded free of charge from the [CCDC](https://www.ccdc.cam.ac.uk/structures/) by refcode.
+
+## Features
+
+- **Open structures**: CIF, SHELX RES/INS, MOL/SDF, MOL2, PDB, XYZ / extended XYZ, VASP POSCAR, XSF, Gaussian input, CSSR; files holding several structures (data blocks, frames) can be stepped through.
+- **Shape the view**: ball-and-stick, stick, space-filling, wireframe and thermal-ellipsoid models; element colours and radii (balls and sticks as large as you like), bonds and hydrogen bonds, weak interactions, coordination polyhedra (a dummy atom X at the centre of a cluster draws the whole cluster as one polyhedron), ring fill; supercells, growth, completing the molecules shown, disorder; views along cell axes or any [uvw] / (hkl), perspective or orthographic projection, clipping planes; selection, measurement and labels.
+- **Render pictures**: two renderers — **PyMOL** (ray tracing: fast, matches the view) and **Mitsuba 3** (path tracing: soft shadows, reflections, glass, glow, depth of field); image size, DPI and transparent background; frame-by-frame **videos** of turning and rocking structures.
+- **PXRD simulation**: the powder pattern from the cell (wavelength, 2θ range, peak width, temperature factors, preferred orientation), with measured patterns (XRDML, RAS, two-column data) overlaid for comparison.
+- **Pore analysis**: pore sizes, surface area, pore volume and pore size distribution with Zeo++ or a grid method, telling connected channels from closed pockets, with the pores drawn in the structure.
+- **Gallery and styles**: save drawings with their settings to a gallery; save a look as a style and apply it to other structures with one click; batch-process many files.
+- **AI assistants (MCP)**: once allowed in Preferences (off by default, this computer only), an AI assistant that speaks MCP can open structures, change the view, and render and export pictures in the window you are watching.
+- **Plugins**: from 0.5.0, new features come as plugins, installed and managed in the **Plugins** tab; see [below](#plugins).
+- **Chinese / English interface**, a built-in [manual](docs/manual.en.md) (F1) and a getting-started tour on first launch.
+
+## Plugins
+
+From 0.5.0, new features of Crystery come as plugins; what Crystery does now stays free. A plugin can add ribbon buttons, sidebar pages and right-click menu items, and bring Python calculations of its own.
+
+- **Install and manage**: **Plugins › Plugin manager**. The "Plugin repository" page lists the plugins registered in [Crystery-plugins](https://github.com/luylin5/Crystery-plugins): click "Install" (the download is checked against its sha256). A plugin package (`.zip`) can also be installed from a file. Enabling, disabling and uninstalling take effect at once.
+- **Safety**: a plugin can run any code on your computer, so install plugins from sources you trust only. If a plugin breaks the window, start `Crystery.exe --safe-mode` (no plugin is loaded) and switch it off in the plugin manager.
+- **Write a plugin**: anyone can build on what Crystery does. See the [plugin guide](docs/plugins.md) (in Chinese) and the complete example in [examples/plugins/hello-crystal](examples/plugins/hello-crystal), then submit a PR to [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) to list it in every user's plugin repository.
+
+## FAQ
+
+**Mitsuba is slow.** It uses an NVIDIA GPU when it can; when it cannot, the notice says why (most often an old graphics driver). Use the Preview quality while adjusting, and Fine for the final picture.
+
+**How big is the exported image?** Exactly the width × height in pixels set in the render settings; the DPI is written into the image file for layout programs to work out the printed size. Journals usually ask for 300–600 DPI.
+
+**Do I need to install Zeo++ for pores?** No, the installer and the portable app both include it. Molecules (files without a unit cell) have no pores or PXRD.
+
+**A file does not open, or looks wrong.** Please attach the file and a screenshot in [Issues](https://github.com/luylin5/Crystery-release/issues).
+
+## Supporting Crystery
+
+Crystery is free. If it helped you, please support it in either of these ways:
+
+1. **Star this repository** ⭐ with the Star button at the top right of this page. More stars help more people find Crystery.
+2. **Cite it in the SI**: if you made figures or calculations with Crystery for a paper, please add a line to the methods in the Supporting Information, for example:
+
+   > Crystal structure figures were prepared with Crystery 0.5.0 (https://github.com/luylin5/Crystery-release).
+
+   As a reference:
+
+   ```
+   luylin5. Crystery (version 0.5.0) [Computer software]. 2026. https://github.com/luylin5/Crystery-release
+   ```
+
+   ```bibtex
+   @software{crystery,
+     author  = {luylin5},
+     title   = {Crystery},
+     version = {0.5.0},
+     year    = {2026},
+     url     = {https://github.com/luylin5/Crystery-release}
+   }
+   ```
+
+When you use Crystery's pore analysis, please also cite Zeo++; for Mitsuba renderings you may also credit Mitsuba 3.
+
+## License
+
+Crystery is **free to use**, including for academic and commercial work, and the official release files may be shared unchanged; it may not be modified, decompiled and redistributed, or sold. Pictures and data you make with Crystery are yours. See [LICENSE](LICENSE).
+
+The open-source components bundled with Crystery (PyMOL, Mitsuba 3, Zeo++, gemmi, NumPy, Electron and others) are distributed under their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## Feedback
+
+Please report problems and suggestions in [Issues](https://github.com/luylin5/Crystery-release/issues); attaching the structure file and a screenshot makes problems much easier to track down.
+
+
+---
+
+<a id="chinese"></a>
+
+# Crystery（中文）
 
 Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、画出可以发表的结构图，并模拟粉末衍射（PXRD）图谱、分析孔道。下载即可使用，不需要另外安装 Python、PyMOL 或其他程序。
 
@@ -45,58 +215,13 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 
 ## 示例图库
 
-下面的图都是用 Crystery 画的，孔道由软件内的 Zeo++ 计算并画进渲染图。
+下面的图都是用 Crystery 画的，孔道由软件内的 Zeo++ 计算并画进渲染图。图片见[上方英文部分](#gallery)：
 
-**MOF 与孔道**
-
-<table>
-<tr>
-<td width="50%"><img src="examples/gallery/mof-5-pore-surface-mitsuba.png" alt="MOF-5 的孔道表面"></td>
-<td width="50%"><img src="examples/gallery/hkust-1-pores-pockets-pymol.png" alt="HKUST-1 的孔道和封闭孔穴"></td>
-</tr>
-<tr>
-<td>MOF-5：N₂ 探针的孔道接触面，ZnO₄ 多面体（Mitsuba）</td>
-<td>HKUST-1：贯通的孔道（蓝）和 N₂ 进不去的封闭孔穴（橙）（PyMOL）</td>
-</tr>
-<tr>
-<td colspan="2"><img src="examples/gallery/co-mof-74-channels-mitsuba-glow.png" alt="Co-MOF-74 的一维孔道"></td>
-</tr>
-<tr>
-<td colspan="2">Co-MOF-74：沿 c 轴看到的一维六边形孔道，深色背景上孔道发光（Mitsuba）</td>
-</tr>
-</table>
-
-**笼子与客体**
-
-<table>
-<tr>
-<td width="50%"><img src="examples/gallery/p4-in-fe4l6-cage-mitsuba.png" alt="Fe4L6 笼中的白磷 P4"></td>
-<td width="50%">Fe₄L₆ 四面体笼中包着的白磷分子 P₄。笼子画成棍状和 FeN₆ 配位多面体，客体单独设为空间填充，用 Mitsuba 路径追踪渲染。</td>
-</tr>
-</table>
-
-**渲染风格**：同一个笼子、同一个视角
-
-<table>
-<tr>
-<td><img src="examples/gallery/styles/1-pymol-ballstick.png" alt="PyMOL 球棍"></td>
-<td><img src="examples/gallery/styles/2-pymol-stick-outline.png" alt="PyMOL 描轮廓"></td>
-<td><img src="examples/gallery/styles/3-pymol-spacefill.png" alt="PyMOL 空间填充"></td>
-<td><img src="examples/gallery/styles/4-mitsuba-glossy.png" alt="Mitsuba 光泽塑料"></td>
-</tr>
-<tr>
-<td>PyMOL · 球棍</td><td>PyMOL · 棍状加轮廓</td><td>PyMOL · 空间填充</td><td>Mitsuba · 光泽塑料</td>
-</tr>
-<tr>
-<td><img src="examples/gallery/styles/5-mitsuba-metal.png" alt="Mitsuba 金属"></td>
-<td><img src="examples/gallery/styles/6-mitsuba-glass.png" alt="Mitsuba 玻璃"></td>
-<td><img src="examples/gallery/styles/7-mitsuba-glow.png" alt="Mitsuba 发光"></td>
-<td><img src="examples/gallery/styles/8-mitsuba-matte-outline-dof.png" alt="Mitsuba 哑光、轮廓、景深"></td>
-</tr>
-<tr>
-<td>Mitsuba · 金属</td><td>Mitsuba · 玻璃</td><td>Mitsuba · 发光</td><td>Mitsuba · 哑光、轮廓、景深</td>
-</tr>
-</table>
+- **MOF-5**：N₂ 探针的孔道接触面，ZnO₄ 多面体（Mitsuba）。
+- **HKUST-1**：贯通的孔道（蓝）和 N₂ 进不去的封闭孔穴（橙）（PyMOL）。
+- **Co-MOF-74**：沿 c 轴看到的一维六边形孔道，深色背景上孔道发光（Mitsuba）。
+- **Fe₄L₆ 笼中的 P₄**：四面体笼中包着的白磷分子，笼子画成棍状和 FeN₆ 配位多面体，客体单独设为空间填充（Mitsuba）。
+- **渲染风格**：同一个笼子、同一个视角——PyMOL 球棍、棍状加轮廓、空间填充；Mitsuba 光泽塑料、金属、玻璃、发光、哑光加轮廓和景深。
 
 结构来自剑桥结构数据库（CSD）：MOF-5（MIBQAR，[10.1021/jp103212z](https://doi.org/10.1021/jp103212z)）、HKUST-1（DOTSOV，[10.1002/anie.200803925](https://doi.org/10.1002/anie.200803925)）、Co-MOF-74（SATNOR01，[10.1002/anie.200501508](https://doi.org/10.1002/anie.200501508)）、P₄@Fe₄L₆（COSZOA，[10.1126/science.1175313](https://doi.org/10.1126/science.1175313)）。可以按编号在 [CCDC](https://www.ccdc.cam.ac.uk/structures/) 免费下载 CIF。
 
@@ -168,127 +293,3 @@ Crystery 内含的第三方开源组件（PyMOL、Mitsuba 3、Zeo++、gemmi、Nu
 ## 反馈
 
 遇到问题或有建议，请在 [Issues](https://github.com/luylin5/Crystery-release/issues) 中提出；附上出错的结构文件和截图会更容易定位问题。
-
----
-
-<a id="english"></a>
-
-# Crystery (English)
-
-Crystery is a Windows desktop application for viewing crystal and molecular structures, making publication-quality structure figures, simulating powder X-ray diffraction (PXRD) patterns and analysing pores. Download it and run it: there is no need to install Python, PyMOL or anything else.
-
-![The Crystery window: MOF-5 with its pores and a Mitsuba render preview](examples/screenshots/crystery-window-en.png)
-
-<sub>The Crystery window: the pores of MOF-5 computed with Zeo++ (the pore settings on the left) and a Mitsuba render preview in the render frame.</sub>
-
-> ⭐ **If Crystery is useful to you, please star this repository, and if you use it for figures or calculations in a paper, please cite it in the Supporting Information (see [Supporting Crystery](#supporting-crystery)).** It is the best way to support its development.
-
-[Download](#download) · [Getting started](#getting-started) · [Manual](docs/manual.en.md) · [Gallery](#gallery) · [Features](#features) · [Plugins](#plugins) · [FAQ](#faq) · [Supporting Crystery](#supporting-crystery) · [License](#license) · [Feedback](#feedback)
-
-## Download
-
-Get the latest version from the [Releases](https://github.com/luylin5/Crystery-release/releases) page:
-
-| File | What it is |
-|---|---|
-| `Crystery-<version>-setup.exe` | **Installer (recommended)**: choose where to install; desktop and Start-menu shortcuts |
-| `Crystery-<version>-portable.exe` | Portable app: nothing to install, double-click to run |
-
-- Requirements: Windows 10 / 11, 64-bit. Mitsuba renders faster with an NVIDIA GPU, and falls back to the CPU without one.
-- The installed app keeps its settings in your AppData and its gallery in Documents\Crystery 图库, so updating or uninstalling keeps them; the portable app keeps them in a `Crystery-data` folder next to the program, so the whole folder can be moved as it is.
-- Windows may warn about an unrecognised app (the installer is not code-signed): click "More info" › "Run anyway".
-- From 0.5.0, Crystery checks for new versions and notices when it starts and tells you when a new version is out; you can skip a version. The check is on by default and can be turned off in **File › Options › Preferences**; **File › Help › Check for updates** checks at any time.
-
-## Getting started
-
-1. **Open a structure**: drag the file into the window, or **File › Open** (Ctrl+O). You can also choose Crystery under "Open with" in File Explorer.
-2. **Shape the view**: right-drag to turn, scroll to zoom, middle-drag or Ctrl+right-drag to pan; click an atom to select it, double-click to select its whole molecule. Models, colours, polyhedra, supercells and so on are on the **Structure** ribbon, with their settings in the left panel.
-3. **Render**: on the **Render** ribbon, choose the renderer (PyMOL or Mitsuba), set the image size and DPI, check the result with **Render preview**, then **Export image**. The frame in the middle of the view is exactly what gets exported.
-4. **Save**: **Save to gallery** (Ctrl+S) keeps the structure, its settings and the view; click its thumbnail in the gallery (Ctrl+G) to open it again as it was. Save a look you like as a **style preset** and apply it to other structures.
-
-### Demo
-
-![Demo: the asymmetric unit, the whole molecule, growth, the cell, PXRD, pores and rendering](examples/demo/crystery-demo-en.gif)
-
-With CCDC 2515979 (Cmme; its channels held pentane): the asymmetric unit → grown along the bonds into the whole molecule → Cl added as a hydrogen-bond acceptor, grown through the N–H···Cl bonds → the unit cell (molecules cut at its faces) → complete molecules based on the cell → PXRD → pores with Zeo++ → Mitsuba rendering. The waits for the calculations and the rendering are sped up. [Download the HD MP4](examples/demo/crystery-demo-en.mp4) (structure from [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w))
-
-The interface starts in English; switch to Chinese in **File › Options › Language**. Every feature is described in the **[manual](docs/manual.en.md)** (the same manual opens in the app with F1).
-
-## Gallery
-
-All pictures were made in Crystery; the pores were computed with the bundled Zeo++ and drawn into the renderings. The pictures are shown in the [Chinese section above](#示例图库):
-
-- **MOF-5**: the pore contact surface for an N₂ probe, with ZnO₄ polyhedra (Mitsuba).
-- **HKUST-1**: the connected channels (blue) and the pockets N₂ cannot reach (orange) (PyMOL).
-- **Co-MOF-74**: 1D hexagonal channels seen along c, glowing on a dark background (Mitsuba).
-- **P₄ in an Fe₄L₆ cage**: white phosphorus held in a tetrahedral cage, drawn as sticks with FeN₆ polyhedra and the guest space-filling (Mitsuba).
-- **Rendering styles**: the same cage from the same angle — PyMOL ball-and-stick, sticks with outlines and space-filling; Mitsuba glossy plastic, metal, glass, glow, and matte with outlines and depth of field.
-
-The structures are from the Cambridge Structural Database (CSD): MOF-5 (MIBQAR, [10.1021/jp103212z](https://doi.org/10.1021/jp103212z)), HKUST-1 (DOTSOV, [10.1002/anie.200803925](https://doi.org/10.1002/anie.200803925)), Co-MOF-74 (SATNOR01, [10.1002/anie.200501508](https://doi.org/10.1002/anie.200501508)) and P₄@Fe₄L₆ (COSZOA, [10.1126/science.1175313](https://doi.org/10.1126/science.1175313)). Their CIFs can be downloaded free of charge from the [CCDC](https://www.ccdc.cam.ac.uk/structures/) by refcode.
-
-## Features
-
-- **Open structures**: CIF, SHELX RES/INS, MOL/SDF, MOL2, PDB, XYZ / extended XYZ, VASP POSCAR, XSF, Gaussian input, CSSR; files holding several structures (data blocks, frames) can be stepped through.
-- **Shape the view**: ball-and-stick, stick, space-filling, wireframe and thermal-ellipsoid models; element colours and radii (balls and sticks as large as you like), bonds and hydrogen bonds, weak interactions, coordination polyhedra (a dummy atom X at the centre of a cluster draws the whole cluster as one polyhedron), ring fill; supercells, growth, completing the molecules shown, disorder; views along cell axes or any [uvw] / (hkl), perspective or orthographic projection, clipping planes; selection, measurement and labels.
-- **Render pictures**: two renderers — **PyMOL** (ray tracing: fast, matches the view) and **Mitsuba 3** (path tracing: soft shadows, reflections, glass, glow, depth of field); image size, DPI and transparent background; frame-by-frame **videos** of turning and rocking structures.
-- **PXRD simulation**: the powder pattern from the cell (wavelength, 2θ range, peak width, temperature factors, preferred orientation), with measured patterns (XRDML, RAS, two-column data) overlaid for comparison.
-- **Pore analysis**: pore sizes, surface area, pore volume and pore size distribution with Zeo++ or a grid method, telling connected channels from closed pockets, with the pores drawn in the structure.
-- **Gallery and styles**: save drawings with their settings to a gallery; save a look as a style and apply it to other structures with one click; batch-process many files.
-- **AI assistants (MCP)**: once allowed in Preferences (off by default, this computer only), an AI assistant that speaks MCP can open structures, change the view, and render and export pictures in the window you are watching.
-- **Plugins**: from 0.5.0, new features come as plugins, installed and managed in the **Plugins** tab; see [below](#plugins).
-- **Chinese / English interface**, a built-in [manual](docs/manual.en.md) (F1) and a getting-started tour on first launch.
-
-## Plugins
-
-From 0.5.0, new features of Crystery come as plugins; what Crystery does now stays free. A plugin can add ribbon buttons, sidebar pages and right-click menu items, and bring Python calculations of its own.
-
-- **Install and manage**: **Plugins › Plugin manager**. The "Plugin repository" page lists the plugins registered in [Crystery-plugins](https://github.com/luylin5/Crystery-plugins): click "Install" (the download is checked against its sha256). A plugin package (`.zip`) can also be installed from a file. Enabling, disabling and uninstalling take effect at once.
-- **Safety**: a plugin can run any code on your computer, so install plugins from sources you trust only. If a plugin breaks the window, start `Crystery.exe --safe-mode` (no plugin is loaded) and switch it off in the plugin manager.
-- **Write a plugin**: anyone can build on what Crystery does. See the [plugin guide](docs/plugins.md) (in Chinese) and the complete example in [examples/plugins/hello-crystal](examples/plugins/hello-crystal), then submit a PR to [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) to list it in every user's plugin repository.
-
-## FAQ
-
-**Mitsuba is slow.** It uses an NVIDIA GPU when it can; when it cannot, the notice says why (most often an old graphics driver). Use the Preview quality while adjusting, and Fine for the final picture.
-
-**How big is the exported image?** Exactly the width × height in pixels set in the render settings; the DPI is written into the image file for layout programs to work out the printed size. Journals usually ask for 300–600 DPI.
-
-**Do I need to install Zeo++ for pores?** No, the installer and the portable app both include it. Molecules (files without a unit cell) have no pores or PXRD.
-
-**A file does not open, or looks wrong.** Please attach the file and a screenshot in [Issues](https://github.com/luylin5/Crystery-release/issues).
-
-## Supporting Crystery
-
-Crystery is free. If it helped you, please support it in either of these ways:
-
-1. **Star this repository** ⭐ with the Star button at the top right of this page. More stars help more people find Crystery.
-2. **Cite it in the SI**: if you made figures or calculations with Crystery for a paper, please add a line to the methods in the Supporting Information, for example:
-
-   > Crystal structure figures were prepared with Crystery 0.5.0 (https://github.com/luylin5/Crystery-release).
-
-   As a reference:
-
-   ```
-   luylin5. Crystery (version 0.5.0) [Computer software]. 2026. https://github.com/luylin5/Crystery-release
-   ```
-
-   ```bibtex
-   @software{crystery,
-     author  = {luylin5},
-     title   = {Crystery},
-     version = {0.5.0},
-     year    = {2026},
-     url     = {https://github.com/luylin5/Crystery-release}
-   }
-   ```
-
-When you use Crystery's pore analysis, please also cite Zeo++; for Mitsuba renderings you may also credit Mitsuba 3.
-
-## License
-
-Crystery is **free to use**, including for academic and commercial work, and the official release files may be shared unchanged; it may not be modified, decompiled and redistributed, or sold. Pictures and data you make with Crystery are yours. See [LICENSE](LICENSE).
-
-The open-source components bundled with Crystery (PyMOL, Mitsuba 3, Zeo++, gemmi, NumPy, Electron and others) are distributed under their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
-## Feedback
-
-Please report problems and suggestions in [Issues](https://github.com/luylin5/Crystery-release/issues); attaching the structure file and a screenshot makes problems much easier to track down.
