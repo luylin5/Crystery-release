@@ -1,0 +1,17 @@
+{
+  "latest": { "version": "0.6.2", "url": "https://github.com/luylin5/Crystery-release/releases/" },
+  "notices": [],
+  "slots": [
+    {
+      "id": "test-2026-11-10-progress",
+      "slot": "progress",
+      "title_zh": "测试广告：Co-MOF-74 孔道渲染",
+      "zh": "这是一条测试广告，只在 2026-11-10 显示",
+      "title_en": "Test ad: Co-MOF-74 channels",
+      "en": "A test ad, shown on 2026-11-10 only",
+      "url": "https://github.com/luylin5/Crystery-release",
+      "image": "https://cdn.jsdelivr.net/gh/luylin5/Crystery-release@main/examples/gallery/co-mof-74-channels-mitsuba-glow.png",
+      "until": "2026-11-10"
+    }
+  ]
+}
