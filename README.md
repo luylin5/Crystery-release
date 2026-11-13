@@ -27,6 +27,7 @@ Get the latest version from the [Releases](https://github.com/luylin5/Crystery-r
 - The installed app keeps its settings in your AppData and its gallery in Documents\Crystery 图库, so updating or uninstalling keeps them; the portable app keeps them in a `Crystery-data` folder next to the program, so the whole folder can be moved as it is.
 - Windows may warn about an unrecognised app (the installer is not code-signed): click "More info" › "Run anyway".
 - From 0.5.0, Crystery checks for new versions and notices when it starts and tells you when a new version is out; you can skip a version. The check is on by default and can be turned off in **File › Options › Preferences**; **File › Help › Check for updates** checks at any time.
+- From 0.7.1, Crystery sends an anonymous usage count at most once a day, so that we know how many people use it: only a random id made the first time it runs, the version, setup or portable, and the country judged on your computer. No name, files or computer details are sent, and no IP address is kept. Turn it off in **File › Options › Preferences**.
 
 ## Getting started
 
@@ -197,6 +198,7 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 - 安装版的设置保存在用户的 AppData 中，图库在“文档\Crystery 图库”，升级或卸载都不会删除；便携版保存在程序旁边的 `Crystery-data` 文件夹中，整个文件夹可以直接拷走。
 - Windows 可能提示“无法识别的应用”（安装包没有代码签名）：点“更多信息” › “仍要运行”。
 - 从 0.5.0 开始，软件启动时会检查新版本和公告，有新版本时会提示，可以选择“跳过这个版本”。这个检查默认开启，可以在 **文件 › 选项 › 偏好设置** 中关闭。也可以随时用 **文件 › 帮助 › 检查更新** 手动检查。
+- 从 0.7.1 开始，软件每天最多发送一次匿名的使用计数，用来了解有多少人在用：只包含第一次运行时随机生成的编号、版本号、安装版还是便携版，以及在你电脑上判断的国家；不发送姓名、文件或电脑信息，也不记录 IP 地址。可以在 **文件 › 选项 › 偏好设置** 中关闭。
 
 ## 快速上手
 
