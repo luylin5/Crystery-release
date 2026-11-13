@@ -1,5 +1,22 @@
 {
-  "latest": { "version": "0.7.0", "url": "https://github.com/luylin5/Crystery-release/releases/" },
+  "latest": {
+    "version": "0.7.1",
+    "date": "2026-11-13",
+    "url": "https://github.com/luylin5/Crystery-release/releases/",
+    "notes": {
+      "zh": "新功能和小提示按界面语言显示中文或英文。新增匿名使用计数：每天最多一次，只发送随机编号、版本和国家，可在 偏好设置 中关闭。",
+      "en": "Tips about new features show in the interface's language. An anonymous usage count, at most once a day (a random id, the version and the country only), can be turned off in Preferences."
+    }
+  },
   "notices": [],
-  "slots": []
+  "slots": [
+    {
+      "id": "tip-plugins-2026-11",
+      "slot": "progress",
+      "zh": "现在支持插件创作，可以自行通过插件设计想要的功能。",
+      "en": "Crystery now supports plugins: build the features you want yourself.",
+      "image": "https://raw.githubusercontent.com/luylin5/Crystery-release/main/tips/plugins-co-mof-74.jpg",
+      "versions": ">0.7.0"
+    }
+  ]
 }
