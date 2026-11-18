@@ -134,6 +134,10 @@ From 0.5.0, new features of Crystery come as plugins; what Crystery does now sta
 - **Write a plugin**: anyone can build on what Crystery does. See the [plugin guide](docs/plugins.md) (in Chinese) and the complete example in [examples/plugins/hello-crystal](examples/plugins/hello-crystal), then submit a PR to [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) to list it in every user's plugin repository.
 - **Have an AI assistant write it**: from 0.7.2, describe the tool you need to an AI assistant connected over MCP; it reads the plugin guide, writes the plugin, installs it in the open window and tries it out (see [AI drawing over MCP](#ai-drawing-over-mcp)).
 
+![Demo: an AI assistant writes, installs and runs a diffraction-spot plugin in Crystery](examples/demo/crystery-mcp-plugin-demo-en.gif)
+
+Asked for "a plugin that shows diffraction spots for a crystal structure", the assistant reads the plugin guide, writes the Python calculation and the sidebar page, checks the patterns of rutile and NaCl, and installs the plugin after Crystery asks you. The new **Diffraction spots** page then draws electron and X-ray patterns for the open structure, with hkl labels, a spot list and image export. The waits are sped up. [Download the HD MP4](examples/demo/crystery-mcp-plugin-demo-en.mp4)
+
 ## FAQ
 
 **Mitsuba is slow.** It uses an NVIDIA GPU when it can; when it cannot, the notice says why (most often an old graphics driver). Use the Preview quality while adjusting, and Fine for the final picture.
@@ -272,6 +276,10 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 - **安全**：插件可以在电脑上运行任意代码，只安装信任来源的插件。某个插件让窗口出了问题时，用 `Crystery.exe --safe-mode` 启动（这次不加载任何插件），再在插件管理中停用它。
 - **写插件**：任何人都可以在现有功能的基础上写插件，写法见[插件开发指南](docs/plugins.md)，完整的例子见 [examples/plugins/hello-crystal](examples/plugins/hello-crystal)。写好后向 [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) 提交 PR，就会出现在所有用户的插件仓库里。
 - **让 AI 助手来写**：从 0.7.2 开始，把你需要的工具告诉通过 MCP 连接的 AI 助手，它会读插件开发指南、写好插件、在打开的窗口中安装并试用（见 [AI 绘图与 MCP](#ai-绘图与-mcp)）。
+
+![演示：AI 助手在 Crystery 中编写、安装并运行衍射斑点插件](examples/demo/crystery-mcp-plugin-demo-en.gif)
+
+让 AI 助手写“一个根据晶体结构显示衍射斑点的插件”：它读插件开发指南，写好 Python 计算和侧边栏页面，用金红石和 NaCl 的衍射图检查结果，在 Crystery 征得你同意后安装插件。新的 **衍射斑点** 页面随即可以为打开的结构画出电子衍射和 X 射线衍射图，带 hkl 标注、斑点列表和导出图片。等待的部分做了加速。[下载高清 MP4](examples/demo/crystery-mcp-plugin-demo-en.mp4)（英文字幕）
 
 ## 常见问题
 
