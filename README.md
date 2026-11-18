@@ -236,9 +236,9 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 
 **在 AI 时代，定义你自己的晶体绘图工具。**
 
-演示动图见[上方英文部分](#ai-drawing-over-mcp)，[下载高清 MP4](examples/demo/crystery-mcp-demo-en.mp4)（英文字幕）。
+![演示：AI 助手在 Crystery 中复现论文插图，再为它编写衍射斑点插件](examples/demo/crystery-mcp-demo-zh.gif)
 
-左边是你自己的 AI 助手，右边是 Crystery，两者通过 MCP 连接。第一部分：把一篇 Nature Chemistry 论文中的 Fig. 2d（TAHPMe·N₁₂Cl₁₂）和一句话交给 AI 助手，它读取 CIF、隐藏庚烷客体、把 N₁₂Cl₁₂ 团簇画成多面体、放好空腔、调好颜色和透明度、渲染出图，再和原图对照检查。这张图手工绘制花了两天，AI 助手大约十分钟就在 Crystery 中画出了同样的图。第二部分：让它写一个显示衍射斑点的插件，它读插件开发指南、写好插件、测试并安装（安装前 Crystery 会先征得你的同意）。等待的部分做了加速。（图和结构来自 [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w)）
+左边是你自己的 AI 助手，右边是 Crystery，两者通过 MCP 连接。第一部分：把一篇 Nature Chemistry 论文中的 Fig. 2d（TAHPMe·N₁₂Cl₁₂）和一句话交给 AI 助手，它读取 CIF、隐藏庚烷客体、把 N₁₂Cl₁₂ 团簇画成多面体、放好空腔、调好颜色和透明度、渲染出图，再和原图对照检查。这张图手工绘制花了两天，AI 助手大约十分钟就在 Crystery 中画出了同样的图。第二部分：让它写一个显示衍射斑点的插件，它读插件开发指南、写好插件、测试并安装（安装前 Crystery 会先征得你的同意）。等待的部分做了加速。[下载高清 MP4](examples/demo/crystery-mcp-demo-zh.mp4)（图和结构来自 [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w)）
 
 - **Vibe drawing 与渲染**：说出你想要的画面和风格，AI 助手在你看着的窗口里设置模型、多面体、颜色、光照和透明度，用 PyMOL 或 Mitsuba 渲染并导出图片。
 - **你自己的工具**：从 0.7.2 开始，AI 助手还可以编写、安装和试用插件，你的工作流需要的工具可以直接在 Crystery 中做出来。
@@ -277,9 +277,9 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 - **写插件**：任何人都可以在现有功能的基础上写插件，写法见[插件开发指南](docs/plugins.md)，完整的例子见 [examples/plugins/hello-crystal](examples/plugins/hello-crystal)。写好后向 [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) 提交 PR，就会出现在所有用户的插件仓库里。
 - **让 AI 助手来写**：从 0.7.2 开始，把你需要的工具告诉通过 MCP 连接的 AI 助手，它会读插件开发指南、写好插件、在打开的窗口中安装并试用（见 [AI 绘图与 MCP](#ai-绘图与-mcp)）。
 
-![演示：AI 助手在 Crystery 中编写、安装并运行衍射斑点插件](examples/demo/crystery-mcp-plugin-demo-en.gif)
+![演示：AI 助手在 Crystery 中编写、安装并运行衍射斑点插件](examples/demo/crystery-mcp-plugin-demo-zh.gif)
 
-让 AI 助手写“一个根据晶体结构显示衍射斑点的插件”：它读插件开发指南，写好 Python 计算和侧边栏页面，用金红石和 NaCl 的衍射图检查结果，在 Crystery 征得你同意后安装插件。新的 **衍射斑点** 页面随即可以为打开的结构画出电子衍射和 X 射线衍射图，带 hkl 标注、斑点列表和导出图片。等待的部分做了加速。[下载高清 MP4](examples/demo/crystery-mcp-plugin-demo-en.mp4)（英文字幕）
+让 AI 助手写“一个根据晶体结构显示衍射斑点的插件”：它读插件开发指南，写好 Python 计算和侧边栏页面，用金红石和 NaCl 的衍射图检查结果，在 Crystery 征得你同意后安装插件。新的 **衍射斑点** 页面随即可以为打开的结构画出电子衍射和 X 射线衍射图，带 hkl 标注、斑点列表和导出图片。等待的部分做了加速。[下载高清 MP4](examples/demo/crystery-mcp-plugin-demo-zh.mp4)
 
 ## 常见问题
 
