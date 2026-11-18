@@ -12,7 +12,7 @@ Crystery is a Windows desktop application for viewing crystal and molecular stru
 
 > ⭐ **If Crystery is useful to you, please star this repository, and if you use it for figures or calculations in a paper, please cite it in the Supporting Information (see [Supporting Crystery](#supporting-crystery)).** It is the best way to support its development.
 
-[Download](#download) · [Getting started](#getting-started) · [Manual](docs/manual.en.md) · [Gallery](#gallery) · [Features](#features) · [Plugins](#plugins) · [FAQ](#faq) · [Supporting Crystery](#supporting-crystery) · [License](#license) · [Feedback](#feedback)
+[Download](#download) · [Getting started](#getting-started) · [AI drawing over MCP](#ai-drawing-over-mcp) · [Manual](docs/manual.en.md) · [Gallery](#gallery) · [Features](#features) · [Plugins](#plugins) · [FAQ](#faq) · [Supporting Crystery](#supporting-crystery) · [License](#license) · [Feedback](#feedback)
 
 ## Download
 
@@ -43,6 +43,18 @@ Get the latest version from the [Releases](https://github.com/luylin5/Crystery-r
 With CCDC 2515979 (Cmme; its channels held pentane): the asymmetric unit → grown along the bonds into the whole molecule → Cl added as a hydrogen-bond acceptor, grown through the N–H···Cl bonds → the unit cell (molecules cut at its faces) → complete molecules based on the cell → PXRD → pores with Zeo++ → Mitsuba rendering. The waits for the calculations and the rendering are sped up. [Download the HD MP4](examples/demo/crystery-demo-en.mp4) (structure from [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w))
 
 The interface starts in English; switch to Chinese in **File › Options › Language**. Every feature is described in the **[manual](docs/manual.en.md)** (the same manual opens in the app with F1).
+
+## AI drawing over MCP
+
+**Define your own crystal drawing tools in the AI era.**
+
+![Demo: an AI assistant rebuilds a paper figure in Crystery, then writes a diffraction plugin for it](examples/demo/crystery-mcp-demo-en.gif)
+
+Your own AI assistant on the left, Crystery on the right, connected over MCP. Part 1: the assistant is given Fig. 2d of a Nature Chemistry paper (TAHPMe·N₁₂Cl₁₂) and one sentence. It reads the CIF, hides the heptane guests, draws the N₁₂Cl₁₂ clusters as polyhedra, places the cavities, matches the colours and transparency, renders, and checks the result against the original. Drawing this figure by hand took two days; the assistant rebuilt it in about ten minutes. Part 2: asked for a plugin that shows diffraction spots, the assistant reads the plugin guide, writes the plugin, tests it and installs it (Crystery asks you first). The waits are sped up. [Download the HD MP4](examples/demo/crystery-mcp-demo-en.mp4) (figure and structure from [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w))
+
+- **Vibe drawing and rendering**: describe the picture and the style you want; the assistant sets up the model, polyhedra, colours, lighting and transparency in the window you are watching, renders it with PyMOL or Mitsuba and exports the image.
+- **Your own tools**: from 0.7.2, the assistant can also write, install and try out plugins, so the tools you need for your own workflow can be built inside Crystery.
+- **Connect**: any AI assistant that speaks MCP can connect. Add `http://127.0.0.1:39217/mcp` as an HTTP MCP server in its settings. The MCP server is on by default from 0.7.2 and only accepts connections from this computer; turn it off in **File › Options › Preferences**.
 
 ## Gallery
 
@@ -109,7 +121,7 @@ The structures are from the Cambridge Structural Database (CSD): MOF-5 (MIBQAR, 
 - **PXRD simulation**: the powder pattern from the cell (wavelength, 2θ range, peak width, temperature factors, preferred orientation), with measured patterns (XRDML, RAS, two-column data) overlaid for comparison.
 - **Pore analysis**: pore sizes, surface area, pore volume and pore size distribution with Zeo++ or a grid method, telling connected channels from closed pockets, with the pores drawn in the structure.
 - **Gallery and styles**: save drawings with their settings to a gallery; save a look as a style and apply it to other structures with one click; batch-process many files.
-- **AI assistants (MCP)**: once allowed in Preferences (off by default, this computer only), an AI assistant that speaks MCP can open structures, change the view, and render and export pictures in the window you are watching.
+- **AI assistants (MCP)**: an AI assistant that speaks MCP can open structures, change the view, and render and export pictures in the window you are watching; from 0.7.2 it can also write, install and try out plugins, asking you before it first installs or changes each one. On by default from 0.7.2 (off by default before), this computer only; see [AI drawing over MCP](#ai-drawing-over-mcp).
 - **Plugins**: from 0.5.0, new features come as plugins, installed and managed in the **Plugins** tab; see [below](#plugins).
 - **Chinese / English interface**, a built-in [manual](docs/manual.en.md) (F1) and a getting-started tour on first launch.
 
@@ -120,6 +132,7 @@ From 0.5.0, new features of Crystery come as plugins; what Crystery does now sta
 - **Install and manage**: **Plugins › Plugin manager**. The "Plugin repository" page lists the plugins registered in [Crystery-plugins](https://github.com/luylin5/Crystery-plugins): click "Install" (the download is checked against its sha256). A plugin package (`.zip`) can also be installed from a file. Enabling, disabling and uninstalling take effect at once.
 - **Safety**: a plugin can run any code on your computer, so install plugins from sources you trust only. If a plugin breaks the window, start `Crystery.exe --safe-mode` (no plugin is loaded) and switch it off in the plugin manager.
 - **Write a plugin**: anyone can build on what Crystery does. See the [plugin guide](docs/plugins.md) (in Chinese) and the complete example in [examples/plugins/hello-crystal](examples/plugins/hello-crystal), then submit a PR to [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) to list it in every user's plugin repository.
+- **Have an AI assistant write it**: from 0.7.2, describe the tool you need to an AI assistant connected over MCP; it reads the plugin guide, writes the plugin, installs it in the open window and tries it out (see [AI drawing over MCP](#ai-drawing-over-mcp)).
 
 ## FAQ
 
@@ -183,7 +196,7 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 
 > ⭐ **如果 Crystery 对你有帮助，请给这个仓库点一个 Star；用它作图或计算的论文，请在支持信息（SI）中引用一下（格式见[下文](#支持-crystery)）。** 这是对开发最大的支持。
 
-[下载](#下载) · [快速上手](#快速上手) · [操作手册](docs/manual.md) · [示例图库](#示例图库) · [功能](#功能) · [插件](#插件) · [常见问题](#常见问题) · [支持 Crystery](#支持-crystery) · [许可](#许可) · [反馈](#反馈)
+[下载](#下载) · [快速上手](#快速上手) · [AI 绘图与 MCP](#ai-绘图与-mcp) · [操作手册](docs/manual.md) · [示例图库](#示例图库) · [功能](#功能) · [插件](#插件) · [常见问题](#常见问题) · [支持 Crystery](#支持-crystery) · [许可](#许可) · [反馈](#反馈)
 
 ## 下载
 
@@ -215,6 +228,18 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 
 界面默认是英文，**文件 › 选项 › 语言** 切换为中文。每个功能的详细说明见 **[操作手册](docs/manual.md)**（软件中按 F1 打开同一份手册）。
 
+## AI 绘图与 MCP
+
+**在 AI 时代，定义你自己的晶体绘图工具。**
+
+演示动图见[上方英文部分](#ai-drawing-over-mcp)，[下载高清 MP4](examples/demo/crystery-mcp-demo-en.mp4)（英文字幕）。
+
+左边是你自己的 AI 助手，右边是 Crystery，两者通过 MCP 连接。第一部分：把一篇 Nature Chemistry 论文中的 Fig. 2d（TAHPMe·N₁₂Cl₁₂）和一句话交给 AI 助手，它读取 CIF、隐藏庚烷客体、把 N₁₂Cl₁₂ 团簇画成多面体、放好空腔、调好颜色和透明度、渲染出图，再和原图对照检查。这张图手工绘制花了两天，AI 助手大约十分钟就在 Crystery 中画出了同样的图。第二部分：让它写一个显示衍射斑点的插件，它读插件开发指南、写好插件、测试并安装（安装前 Crystery 会先征得你的同意）。等待的部分做了加速。（图和结构来自 [10.1038/s41557-026-02248-w](https://doi.org/10.1038/s41557-026-02248-w)）
+
+- **Vibe drawing 与渲染**：说出你想要的画面和风格，AI 助手在你看着的窗口里设置模型、多面体、颜色、光照和透明度，用 PyMOL 或 Mitsuba 渲染并导出图片。
+- **你自己的工具**：从 0.7.2 开始，AI 助手还可以编写、安装和试用插件，你的工作流需要的工具可以直接在 Crystery 中做出来。
+- **连接方式**：任何支持 MCP 的 AI 助手都可以连接，在它的设置中把 `http://127.0.0.1:39217/mcp` 添加为 HTTP MCP 服务器即可。从 0.7.2 开始 MCP 默认开启，只接受本机的连接，可以在 **文件 › 选项 › 偏好设置** 中关闭。
+
 ## 示例图库
 
 下面的图都是用 Crystery 画的，孔道由软件内的 Zeo++ 计算并画进渲染图。图片见[上方英文部分](#gallery)：
@@ -235,7 +260,7 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 - **PXRD 模拟**：从晶胞计算粉末衍射图谱（波长、2θ 范围、峰宽、温度因子、择优取向），可叠加实验图谱（XRDML、RAS、两列数据）对比。
 - **孔道分析**：用 Zeo++ 或网格法计算孔径、比表面积、孔体积和孔径分布，区分贯通的孔道和封闭孔穴，并把孔道画进结构。
 - **图库与风格**：画好的图连同设置存进图库；把一套画法存成风格，打开别的结构一键套用；批量处理多个文件。
-- **AI 助手（MCP）**：在偏好设置中打开后（默认关，只限本机），支持 MCP 的 AI 助手可以在你看着的窗口里打开结构、调整画面、渲染和导出图片。
+- **AI 助手（MCP）**：支持 MCP 的 AI 助手可以在你看着的窗口里打开结构、调整画面、渲染和导出图片；从 0.7.2 开始还可以编写、安装和试用插件，第一次安装或修改每个插件前都会先问你。从 0.7.2 开始默认开启（之前默认关闭），只限本机，见 [AI 绘图与 MCP](#ai-绘图与-mcp)。
 - **插件**：从 0.5.0 开始，新功能以插件的形式添加，在 **插件** 标签中安装和管理，见[下文](#插件)。
 - **中文 / English 界面**，内置[操作手册](docs/manual.md)（F1）和首次启动的新手引导。
 
@@ -246,6 +271,7 @@ Crystery 是一个 Windows 桌面软件，用来查看晶体和分子结构、�
 - **安装和管理**：**插件 › 插件管理**。“插件仓库”页列出 [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) 中登记的插件，点“安装”即可，下载的文件会核对 sha256；也可以“从文件安装”插件包（`.zip`）。启用、停用、卸载都立即生效。
 - **安全**：插件可以在电脑上运行任意代码，只安装信任来源的插件。某个插件让窗口出了问题时，用 `Crystery.exe --safe-mode` 启动（这次不加载任何插件），再在插件管理中停用它。
 - **写插件**：任何人都可以在现有功能的基础上写插件，写法见[插件开发指南](docs/plugins.md)，完整的例子见 [examples/plugins/hello-crystal](examples/plugins/hello-crystal)。写好后向 [Crystery-plugins](https://github.com/luylin5/Crystery-plugins) 提交 PR，就会出现在所有用户的插件仓库里。
+- **让 AI 助手来写**：从 0.7.2 开始，把你需要的工具告诉通过 MCP 连接的 AI 助手，它会读插件开发指南、写好插件、在打开的窗口中安装并试用（见 [AI 绘图与 MCP](#ai-绘图与-mcp)）。
 
 ## 常见问题
 
