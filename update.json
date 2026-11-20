@@ -1,11 +1,12 @@
 {
   "latest": {
-    "version": "0.7.1",
-    "date": "2026-11-13",
+    "version": "0.7.2",
+    "date": "2026-11-18",
     "url": "https://github.com/luylin5/Crystery-release/releases/",
+    "download": "https://dl.luyulin.com/V{version}",
     "notes": {
-      "zh": "新功能和小提示按界面语言显示中文或英文。新增匿名使用计数：每天最多一次，只发送随机编号、版本和国家，可在 偏好设置 中关闭。",
-      "en": "Tips about new features show in the interface's language. An anonymous usage count, at most once a day (a random id, the version and the country only), can be turned off in Preferences."
+      "zh": "AI 助手可以通过 MCP 直接在开着的 Crystery 里写插件、安装并试运行；MCP 默认开启；所有插件的按钮都放在“插件”标签里，装好插件后自动切过去。",
+      "en": "AI assistants can write, install and try out plugins in the open Crystery over MCP; MCP is on by default; every plugin's buttons are in the Plugins tab, which opens once a plugin is installed."
     }
   },
   "notices": [],
