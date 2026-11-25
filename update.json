@@ -14,8 +14,9 @@
     {
       "id": "tip-plugins-2026-11",
       "slot": "progress",
-      "zh": "现在支持插件创作，可以自行通过插件设计想要的功能。",
-      "en": "Crystery now supports plugins: build the features you want yourself.",
+      "zh": "现在支持插件创作，可以自行通过插件设计想要的功能。了解更多 →",
+      "en": "Crystery now supports plugins: build the features you want yourself. Learn more →",
+      "url": "https://luyulin.com/crystery-videos",
       "image": "https://raw.githubusercontent.com/luylin5/Crystery-release/main/tips/plugins-co-mof-74.jpg",
       "versions": ">0.7.0"
     }
